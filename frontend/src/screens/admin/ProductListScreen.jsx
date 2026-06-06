@@ -1,5 +1,6 @@
 import { Table, Button, Row, Col } from 'react-bootstrap';
 import { FaEdit, FaPlus, FaTrash } from 'react-icons/fa';
+import { formatPrice } from '../../constants';
 import { Link, useParams } from 'react-router-dom';
 import Message from '../../components/Message';
 import Loader from '../../components/Loader';
@@ -83,7 +84,7 @@ const ProductListScreen = () => {
                 <tr key={product._id}>
                   <td>{product._id}</td>
                   <td>{product.name}</td>
-                  <td>${product.price}</td>
+                  <td>₹{formatPrice(product.price)}</td>
                   <td>{product.category}</td>
                   <td>{product.brand}</td>
                   <td>

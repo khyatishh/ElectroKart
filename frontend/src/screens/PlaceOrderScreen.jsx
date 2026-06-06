@@ -8,6 +8,7 @@ import CheckoutSteps from '../components/CheckoutSteps';
 import Loader from '../components/Loader';
 import { useCreateOrderMutation } from '../slices/ordersApiSlice';
 import { clearCartItems } from '../slices/cartSlice';
+import { formatPrice } from '../constants';
 
 const PlaceOrderScreen = () => {
   const navigate = useNavigate();
@@ -88,8 +89,9 @@ const PlaceOrderScreen = () => {
                           </Link>
                         </Col>
                         <Col md={4}>
-                          {item.qty} x ${item.price} = $
-                          {(item.qty * (item.price * 100)) / 100}
+                          {item.qty} x ₹{formatPrice(item.price)} = ₹{formatPrice(
+                            item.qty * item.price
+                          )}
                         </Col>
                       </Row>
                     </ListGroup.Item>
@@ -108,25 +110,25 @@ const PlaceOrderScreen = () => {
               <ListGroup.Item>
                 <Row>
                   <Col>Items</Col>
-                  <Col>${cart.itemsPrice}</Col>
+                  <Col>₹{formatPrice(cart.itemsPrice)}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
                   <Col>Shipping</Col>
-                  <Col>${cart.shippingPrice}</Col>
+                  <Col>₹{formatPrice(cart.shippingPrice)}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
                   <Col>Tax</Col>
-                  <Col>${cart.taxPrice}</Col>
+                  <Col>₹{formatPrice(cart.taxPrice)}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
                   <Col>Total</Col>
-                  <Col>${cart.totalPrice}</Col>
+                  <Col>₹{formatPrice(cart.totalPrice)}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>

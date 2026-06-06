@@ -18,6 +18,7 @@ import {
 } from '../slices/productsApiSlice';
 import Rating from '../components/Rating';
 import Loader from '../components/Loader';
+import { formatPrice } from '../constants';
 import Message from '../components/Message';
 import Meta from '../components/Meta';
 import { addToCart } from '../slices/cartSlice';
@@ -94,7 +95,7 @@ const ProductScreen = () => {
                     text={`${product.numReviews} reviews`}
                   />
                 </ListGroup.Item>
-                <ListGroup.Item>Price: ${product.price}</ListGroup.Item>
+                <ListGroup.Item>Price: ₹{formatPrice(product.price)}</ListGroup.Item>
                 <ListGroup.Item>
                   Description: {product.description}
                 </ListGroup.Item>
@@ -107,7 +108,7 @@ const ProductScreen = () => {
                     <Row>
                       <Col>Price:</Col>
                       <Col>
-                        <strong>${product.price}</strong>
+                        <strong>₹{formatPrice(product.price)}</strong>
                       </Col>
                     </Row>
                   </ListGroup.Item>

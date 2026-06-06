@@ -1,4 +1,5 @@
 import { Table, Button } from 'react-bootstrap';
+import { formatPrice } from '../../constants';
 import { FaTimes } from 'react-icons/fa';
 import Message from '../../components/Message';
 import Loader from '../../components/Loader';
@@ -36,7 +37,7 @@ const OrderListScreen = () => {
                 <td>{order._id}</td>
                 <td>{order.user && order.user.name}</td>
                 <td>{order.createdAt.substring(0, 10)}</td>
-                <td>${order.totalPrice}</td>
+                <td>₹{formatPrice(order.totalPrice)}</td>
                 <td>
                   {order.isPaid ? (
                     order.paidAt.substring(0, 10)

@@ -5,3 +5,10 @@ export const PRODUCTS_URL = '/api/products';
 export const USERS_URL = '/api/users';
 export const ORDERS_URL = '/api/orders';
 export const PAYPAL_URL = '/api/config/paypal';
+
+export const INR_RATE = 82;
+
+export const formatPrice = (price) => {
+  const value = Number(price);
+  return Number.isNaN(value) ? '0.00' : (value * INR_RATE).toFixed(2);
+};

@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Row, Col, ListGroup, Image, Card, Button } from 'react-bootstrap';
+import { formatPrice } from '../constants';
 import { PayPalButtons, usePayPalScriptReducer } from '@paypal/react-paypal-js';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
@@ -171,7 +172,9 @@ const OrderScreen = () => {
                           </Link>
                         </Col>
                         <Col md={4}>
-                          {item.qty} x ${item.price} = ${item.qty * item.price}
+                          {item.qty} x ₹{formatPrice(item.price)} = ₹{formatPrice(
+                            item.qty * item.price
+                          )}
                         </Col>
                       </Row>
                     </ListGroup.Item>
@@ -190,25 +193,25 @@ const OrderScreen = () => {
               <ListGroup.Item>
                 <Row>
                   <Col>Items</Col>
-                  <Col>${order.itemsPrice}</Col>
+                  <Col>₹{formatPrice(order.itemsPrice)}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
                   <Col>Shipping</Col>
-                  <Col>${order.shippingPrice}</Col>
+                  <Col>₹{formatPrice(order.shippingPrice)}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
                   <Col>Tax</Col>
-                  <Col>${order.taxPrice}</Col>
+                  <Col>₹{formatPrice(order.taxPrice)}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
                   <Col>Total</Col>
-                  <Col>${order.totalPrice}</Col>
+                  <Col>₹{formatPrice(order.totalPrice)}</Col>
                 </Row>
               </ListGroup.Item>
               {!order.isPaid && (
